@@ -1,0 +1,10 @@
+SERVICE_NAME=ident
+SOCK_TYPE=stream
+PROTOCOL=tcp
+PORT=113
+FLAGS=nowait
+USER=nobody
+GROUP=proc
+SERVER=tcpd
+DAEMON=/usr/sbin/identd
+FAMILY=ipv4

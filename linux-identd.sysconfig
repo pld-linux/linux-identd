@@ -1,0 +1,4 @@
+# Customized setings for identd
+
+# Nice level for identd
+SERVICE_RUN_NICE_LEVEL="+5"
