@@ -25,7 +25,7 @@ through inetd.
 
 %description -l pl
 linux-identd to demon identyfikacji u¿ytkowników dla Linuksa, bêd±cy
-implementacj± protoko³u identyfikacji (RFC1413). Protokó³ slu¿y do
+implementacj± protoko³u identyfikacji (RFC1413). Protokó³ s³u¿y do
 identyfikowania aktywnych po³±czeñ TCP. Demon s³ucha na porcie 113
 (auth) i mo¿e byæ uruchamiany jako samodzielny demon lub poprzez
 inetd.
