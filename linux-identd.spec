@@ -12,8 +12,9 @@ Source3:	%{name}.init
 URL:		http://www.fukt.bth.se/~per/identd/
 Requires:	linux-identd-frontend
 Provides:	identserver
-Obsoletes:	pidentd oidentd
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+Obsoletes:	oidentd
+Obsoletes:	pidentd
 
 %description
 linux-identd is a user identification daemon for Linux, which
