@@ -1,12 +1,12 @@
 Summary:	Simple ident daemon
 Summary(pl):	Prosty demon ident
 Name:		linux-identd
-Version:	1.2
-Release:	2
+Version:	1.3
+Release:	1
 License:	GPL v2
 Group:		Networking/Daemons
+# Source0-md5:	c3517f612b351e46951d2ecb0c60b767
 Source0:	http://www.fukt.bth.se/~per/identd/%{name}-%{version}.tar.gz
-# Source0-md5:	52b5b0b25901bd78e15aa3fea198b3fe
 Source1:	%{name}.inetd
 Source2:	%{name}.sysconfig
 Source3:	%{name}.init
