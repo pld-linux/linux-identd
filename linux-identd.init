@@ -16,7 +16,7 @@
 . /etc/sysconfig/network
 
 # Source oident configureation.
-if [ -f /etc/sysconfig/identd ] ; then
+if [ -f /etc/sysconfig/identd ]; then
 	. /etc/sysconfig/identd
 fi
 
