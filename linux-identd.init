@@ -21,9 +21,13 @@ if [ -f /etc/sysconfig/identd ] ; then
 fi
 
 # Check that networking is up.
-if is_no "${NETWORKING}"; then
-	msg_Network_Down identd
-	exit 1
+if is_yes "${NETWORKING}"; then
+	if [ ! -f /var/lock/subsys/network ]; then
+		msg_network_down identd
+		exit 1
+	fi
+else
+	exit 0
 fi
 
 # See how we were called.
@@ -36,7 +40,8 @@ case "$1" in
 		RETVAL=$?
 		[ $RETVAL -eq 0 ] && touch /var/lock/subsys/identd
 	else
-		msg_Already_Running identd
+		msg_already_running identd
+		exit 1
 	fi
 	;;
   stop)
@@ -46,11 +51,11 @@ case "$1" in
 		killproc identd
 		rm -f /var/lock/subsys/identd >/dev/null 2>&1
 	else
-		msg_Not_Running identd
+		msg_not_running identd
 		exit 1
 	fi	
 	;;
-  restart)
+  restart|reload)
 	$0 stop
 	$0 start
 	;;
@@ -58,9 +63,8 @@ case "$1" in
 	status identd
 	;;
   *)
-	msg_usage "$0 {start|stop|restart|status}"
+	msg_usage "$0 {start|stop|restart|reload|status}"
 	exit 1
 esac
 
 exit $RETVAL
-
