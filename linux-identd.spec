@@ -2,7 +2,7 @@ Summary:	Simple ident daemon
 Summary(pl):	Prosty demon ident
 Name:		linux-identd
 Version:	1.2
-Release:	1
+Release:	2
 License:	GPL v2
 Group:		Networking/Daemons
 Source0:	http://www.fukt.bth.se/~per/identd/%{name}-%{version}.tar.gz
@@ -23,6 +23,13 @@ used to identify active TCP connections. The daemon listens to TCP
 port 113 (auth), and can be run either as a stand-alone daemon, or
 through inetd.
 
+%description -l pl
+linux-identd to demon identyfikacji u¿ytkowników dla Linuksa, bêd±cy
+implementacj± protoko³u identyfikacji (RFC1413). Protokó³ slu¿y do
+identyfikowania aktywnych po³±czeñ TCP. Demon s³ucha na porcie 113
+(auth) i mo¿e byæ uruchamiany jako samodzielny demon lub poprzez
+inetd.
+
 %package standalone
 Summary:	Simple ident daemon
 Summary(pl):	Prosty demon ident
@@ -30,11 +37,14 @@ Group:		Networking/Daemons
 Provides:	linux-identd-frontend
 Prereq:		%{name} = %{version}
 Prereq:		rc-scripts
-Prereq:		/sbin/chkconfig
+Requires(post,preun):	/sbin/chkconfig
 Obsoletes:	%{name}-inetd
 
 %description standalone
 linux-identd standalone version.
+
+%description standalone -l pl
+Samodzielna wersja demona linux-identd.
 
 %package inetd
 Summary:	Simple ident daemon
@@ -48,6 +58,9 @@ Obsoletes:	%{name}-standalone
 
 %description inetd
 linux-identd inetd version.
+
+%description inetd -l pl
+Wersja demona linux-identd uruchamiana z inetd.
 
 %prep
 %setup -q
@@ -100,7 +113,7 @@ fi
 %defattr(644,root,root,755)
 %doc README ChangeLog
 %attr(755,root,root) %{_sbindir}/identd
-%{_mandir}/man8/identd.8.gz
+%{_mandir}/man8/identd.8*
 
 %files inetd
 %defattr(644,root,root,755)
