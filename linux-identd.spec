@@ -6,6 +6,7 @@ Release:	2
 License:	GPL v2
 Group:		Networking/Daemons
 Source0:	http://www.fukt.bth.se/~per/identd/%{name}-%{version}.tar.gz
+# Source0-md5:	52b5b0b25901bd78e15aa3fea198b3fe
 Source1:	%{name}.inetd
 Source2:	%{name}.sysconfig
 Source3:	%{name}.init
