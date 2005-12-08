@@ -3,10 +3,10 @@
 # identd		This shell script takes care of starting and stopping linux-identd.
 #
 # chkconfig:	2345 80 30
-# description:	identd is a TCP/IP IDENT protocol server 
-#		
+# description:	identd is a TCP/IP IDENT protocol server
+#
 # processname:	identd
-# config:	
+# config:
 # pidfile:
 
 # Source function library.
@@ -52,7 +52,7 @@ case "$1" in
 		rm -f /var/lock/subsys/identd >/dev/null 2>&1
 	else
 		msg_not_running identd
-	fi	
+	fi
 	;;
   restart|force-reload)
 	$0 stop
