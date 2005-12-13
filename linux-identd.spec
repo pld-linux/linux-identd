@@ -36,9 +36,9 @@ Summary:	Simple ident daemon
 Summary(pl):	Prosty demon ident
 Group:		Networking/Daemons
 Provides:	linux-identd-frontend
-Prereq:		%{name} = %{version}
-Prereq:		rc-scripts
 Requires(post,preun):	/sbin/chkconfig
+Requires:	%{name} = %{version}
+Requires:	rc-scripts
 Obsoletes:	%{name}-inetd
 
 %description standalone
@@ -52,9 +52,9 @@ Summary:	Simple ident daemon
 Summary(pl):	Prosty demon ident
 Group:		Networking/Daemons
 Provides:	linux-identd-frontend
-Prereq:		%{name} = %{version}
-Prereq:		rc-inetd
+Requires:	%{name} = %{version}
 Requires:	inetdaemon
+Requires:	rc-inetd
 Obsoletes:	%{name}-standalone
 
 %description inetd
@@ -73,7 +73,8 @@ Wersja demona linux-identd uruchamiana z inetd.
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT/etc/{sysconfig/rc-inetd,rc.d/init.d}
 
-%{__make} install DESTDIR=$RPM_BUILD_ROOT MANDIR=%{_mandir}
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT MANDIR=%{_mandir}
 
 install %{SOURCE1} $RPM_BUILD_ROOT/etc/sysconfig/rc-inetd/identd
 install %{SOURCE2} $RPM_BUILD_ROOT/etc/sysconfig/identd
@@ -122,5 +123,5 @@ fi
 
 %files standalone
 %defattr(644,root,root,755)
-%attr(640,root,root) %config(noreplace) %verify(not size mtime md5) /etc/sysconfig/identd
+%attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) /etc/sysconfig/identd
 %attr(754,root,root) /etc/rc.d/init.d/identd
