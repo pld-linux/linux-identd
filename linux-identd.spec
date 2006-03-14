@@ -5,17 +5,18 @@ Version:	1.3
 Release:	1
 License:	GPL v2
 Group:		Networking/Daemons
-# Source0-md5:	c3517f612b351e46951d2ecb0c60b767
 Source0:	http://www.fukt.bth.se/~per/identd/%{name}-%{version}.tar.gz
+# Source0-md5:	c3517f612b351e46951d2ecb0c60b767
 Source1:	%{name}.inetd
 Source2:	%{name}.sysconfig
 Source3:	%{name}.init
 URL:		http://www.fukt.bth.se/~per/identd/
+BuildRequires:	rpmbuild(macros) >= 1.268
 Requires:	linux-identd-frontend
 Provides:	identserver
-BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Obsoletes:	oidentd
 Obsoletes:	pidentd
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 linux-identd is a user identification daemon for Linux, which
@@ -35,11 +36,11 @@ inetd.
 Summary:	Simple ident daemon
 Summary(pl):	Prosty demon ident
 Group:		Networking/Daemons
-Provides:	linux-identd-frontend
 Requires(post,preun):	/sbin/chkconfig
 Requires:	%{name} = %{version}
 Requires:	rc-scripts
-Obsoletes:	%{name}-inetd
+Provides:	linux-identd-frontend
+Obsoletes:	linux-identd-inetd
 
 %description standalone
 linux-identd standalone version.
@@ -51,11 +52,11 @@ Samodzielna wersja demona linux-identd.
 Summary:	Simple ident daemon
 Summary(pl):	Prosty demon ident
 Group:		Networking/Daemons
-Provides:	linux-identd-frontend
 Requires:	%{name} = %{version}
 Requires:	inetdaemon
 Requires:	rc-inetd
-Obsoletes:	%{name}-standalone
+Provides:	linux-identd-frontend
+Obsoletes:	linux-identd-standalone
 
 %description inetd
 linux-identd inetd version.
@@ -84,30 +85,20 @@ install %{SOURCE3} $RPM_BUILD_ROOT/etc/rc.d/init.d/identd
 rm -rf $RPM_BUILD_ROOT
 
 %post inetd
-if [ -f /var/lock/subsys/rc-inetd ]; then
-	/etc/rc.d/init.d/rc-inetd reload 1>&2
-else
-	echo "Type \"/etc/rc.d/init.d/rc-inetd start\" to start inet server" 1>&2
-fi
+%service -q rc-inetd reload
 
 %postun inetd
-if [ "$1" = "0" -a -f /var/lock/subsys/rc-inetd ]; then
-	/etc/rc.d/init.d/rc-inetd reload 1>&2
+if [ "$1" = "0" ]; then
+	%service -q rc-inetd reload
 fi
 
 %post standalone
 /sbin/chkconfig --add identd
-if [ -f /var/lock/subsys/identd ]; then
-	/etc/rc.d/init.d/identd restart 1>&2
-else
-	echo "Run \"/etc/rc.d/init.d/identd start\" to start ident daemon."
-fi
+%service identd restart "ident daemon"
 
 %preun standalone
 if [ "$1" = "0" ]; then
-	if [ -f /var/lock/subsys/identd ]; then
-		/etc/rc.d/init.d/identd stop 1>&2
-	fi
+	%service identd stop
 	/sbin/chkconfig --del identd
 fi
 
