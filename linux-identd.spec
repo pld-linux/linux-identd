@@ -37,7 +37,7 @@ Summary:	Simple ident daemon
 Summary(pl):	Prosty demon ident
 Group:		Networking/Daemons
 Requires(post,preun):	/sbin/chkconfig
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{version}-%{release}
 Requires:	rc-scripts
 Provides:	linux-identd-frontend
 Obsoletes:	linux-identd-inetd
@@ -52,7 +52,7 @@ Samodzielna wersja demona linux-identd.
 Summary:	Simple ident daemon
 Summary(pl):	Prosty demon ident
 Group:		Networking/Daemons
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{version}-%{release}
 Requires:	inetdaemon
 Requires:	rc-inetd
 Provides:	linux-identd-frontend
