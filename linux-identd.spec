@@ -1,5 +1,5 @@
 Summary:	Simple ident daemon
-Summary(pl):	Prosty demon ident
+Summary(pl.UTF-8):   Prosty demon ident
 Name:		linux-identd
 Version:	1.3
 Release:	1
@@ -25,16 +25,16 @@ used to identify active TCP connections. The daemon listens to TCP
 port 113 (auth), and can be run either as a stand-alone daemon, or
 through inetd.
 
-%description -l pl
-linux-identd to demon identyfikacji u¿ytkowników dla Linuksa, bêd±cy
-implementacj± protoko³u identyfikacji (RFC1413). Protokó³ s³u¿y do
-identyfikowania aktywnych po³±czeñ TCP. Demon s³ucha na porcie 113
-(auth) i mo¿e byæ uruchamiany jako samodzielny demon lub poprzez
+%description -l pl.UTF-8
+linux-identd to demon identyfikacji uÅ¼ytkownikÃ³w dla Linuksa, bÄ™dÄ…cy
+implementacjÄ… protokoÅ‚u identyfikacji (RFC1413). ProtokÃ³Å‚ sÅ‚uÅ¼y do
+identyfikowania aktywnych poÅ‚Ä…czeÅ„ TCP. Demon sÅ‚ucha na porcie 113
+(auth) i moÅ¼e byÄ‡ uruchamiany jako samodzielny demon lub poprzez
 inetd.
 
 %package standalone
 Summary:	Simple ident daemon
-Summary(pl):	Prosty demon ident
+Summary(pl.UTF-8):   Prosty demon ident
 Group:		Networking/Daemons
 Requires(post,preun):	/sbin/chkconfig
 Requires:	%{name} = %{version}-%{release}
@@ -45,12 +45,12 @@ Obsoletes:	linux-identd-inetd
 %description standalone
 linux-identd standalone version.
 
-%description standalone -l pl
+%description standalone -l pl.UTF-8
 Samodzielna wersja demona linux-identd.
 
 %package inetd
 Summary:	Simple ident daemon
-Summary(pl):	Prosty demon ident
+Summary(pl.UTF-8):   Prosty demon ident
 Group:		Networking/Daemons
 Requires:	%{name} = %{version}-%{release}
 Requires:	inetdaemon
@@ -61,7 +61,7 @@ Obsoletes:	linux-identd-standalone
 %description inetd
 linux-identd inetd version.
 
-%description inetd -l pl
+%description inetd -l pl.UTF-8
 Wersja demona linux-identd uruchamiana z inetd.
 
 %prep
