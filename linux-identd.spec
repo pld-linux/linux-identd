@@ -1,5 +1,5 @@
 Summary:	Simple ident daemon
-Summary(pl.UTF-8):   Prosty demon ident
+Summary(pl.UTF-8):	Prosty demon ident
 Name:		linux-identd
 Version:	1.3
 Release:	1
@@ -34,7 +34,7 @@ inetd.
 
 %package standalone
 Summary:	Simple ident daemon
-Summary(pl.UTF-8):   Prosty demon ident
+Summary(pl.UTF-8):	Prosty demon ident
 Group:		Networking/Daemons
 Requires(post,preun):	/sbin/chkconfig
 Requires:	%{name} = %{version}-%{release}
@@ -50,7 +50,7 @@ Samodzielna wersja demona linux-identd.
 
 %package inetd
 Summary:	Simple ident daemon
-Summary(pl.UTF-8):   Prosty demon ident
+Summary(pl.UTF-8):	Prosty demon ident
 Group:		Networking/Daemons
 Requires:	%{name} = %{version}-%{release}
 Requires:	inetdaemon
