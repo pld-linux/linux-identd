@@ -6,8 +6,6 @@
 # description:	identd is a TCP/IP IDENT protocol server
 #
 # processname:	identd
-# config:
-# pidfile:
 
 # Source function library.
 . /etc/rc.d/init.d/functions
